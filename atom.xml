@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://misterzhai.win/"/>
-  <updated>2016-10-16T12:34:10.000Z</updated>
+  <updated>2016-10-16T12:53:01.000Z</updated>
   <id>http://misterzhai.win/</id>
   
   <author>
@@ -16,11 +16,136 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Jekyll的搭建和Github的部署</title>
+    <link href="http://misterzhai.win/2016/10/16/jekyllBlog/"/>
+    <id>http://misterzhai.win/2016/10/16/jekyllBlog/</id>
+    <published>2016-10-16T12:46:20.000Z</published>
+    <updated>2016-10-16T12:53:01.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="Jekyll的搭建和Github的部署"><a href="#Jekyll的搭建和Github的部署" class="headerlink" title="Jekyll的搭建和Github的部署"></a>Jekyll的搭建和Github的部署</h1><p>先把曾将搭建的JekyllBlog过程发上来吧，虽然弄好之后并没有一直写。</p>
+<h2 id="使用gem安装Jekyll"><a href="#使用gem安装Jekyll" class="headerlink" title="使用gem安装Jekyll"></a>使用gem安装Jekyll</h2><pre><code>gem install jekyll
+</code></pre><p>Ruby自带的有gem所以可以直接用gem安装，但是在国内官方的源是没办法用的，会报如下错误：</p>
+<pre><code>ERROR:  Could not find a valid gem &apos;jekyll&apos; (&gt;= 0), here is why:
+      Unable to download data from https://rubygems.org/ - Errno::ECONNRESET: Connection reset by peer - SSL_connect (https://rubygems.org/latest_specs.4.8.gz)
+</code></pre><p>所以就需要更换为国内的镜像，一般使用淘宝的<a href="https://ruby.taobao.org" target="_blank" rel="external">RubyGems</a>镜像,具体设置见文档。</p>
+<pre><code>ERROR:  While executing gem ... (Gem::FilePermissionError)
+You don&apos;t have write permissions for the /Library/Ruby/Gems/2.0.0 directory.
+</code></pre><p>把权限修改过来</p>
+<pre><code>sudo chmod 777 /Library/Ruby/Gems/2.0.0
+</code></pre><p>在安装的过程中一直提示错误，于是又反过去，发现在更换淘宝源的时候，有一条命令没有输入执行，忽略了，于是又开始执行</p>
+<pre><code>gem install rails
+</code></pre><p>提示出错，又是搜索，解决步骤</p>
+<ul>
+<li>sudo gem update –system</li>
+<li>xcode-select –install   会提示安装命令行工具，点击安装</li>
+<li>sudo gem install compass</li>
+<li>sudo gem install rails 执行中会提示是否重新覆盖<strong>Overwrite the executable? [yN]</strong>输入y</li>
+</ul>
+<p>然后还是卡在</p>
+<pre><code>Fetching: listen-3.0.6.gem (100%)
+ERROR:  While executing gem ... (Errno::EACCES)
+Permission denied - /Library/Ruby/Gems/2.0.0/cache/listen-3.0.6.gem
+</code></pre><p>然后切换VPN用Google开始搜，并没有卵用ORZ~~然后用sudo又试了一下居然success</p>
+<pre><code>sudo gem install jekyll
+</code></pre><p>如果要卸载<code>gem uninstall jekyll</code></p>
+<h2 id="创建博客站点"><a href="#创建博客站点" class="headerlink" title="创建博客站点"></a>创建博客站点</h2><p>先cd 到桌面 在桌面目录下</p>
+<pre><code>jekyll new blog 
+</code></pre><p>会在桌面上创建出一个文件夹<code>执行help命令查看更多</code></p>
+<h2 id="开启服务"><a href="#开启服务" class="headerlink" title="开启服务"></a>开启服务</h2><pre><code>cd blog         #进入blog目录,记得一定要进入创建的目录，否则服务无法开启
+jekyll serve      #启动你的http服务 
+</code></pre><p>本地服务开启 默认开启端口4000 输入<a href="http://localhost:4000或者http://127.0.0.1:4000/即可访问" target="_blank" rel="external">http://localhost:4000或者http://127.0.0.1:4000/即可访问</a></p>
+<p>目录结构如下：</p>
+<pre><code>├ about.md
+├ _config.yml
+├ css
+│   └ main.scss
+├ feed.xml
+├ _includes
+│   ├ footer.html
+│   ├ header.html
+│   ├ head.html
+│   ├ icon-github.html
+│   ├ icon-github.svg
+│   ├ icon-twitter.html
+│   └ icon-twitter.svg
+├ index.html
+├ _layouts
+│   ├ default.html
+│   ├ page.html
+│   └ post.html
+├ _posts
+│   └ 2016-03-04-welcome-to-jekyll.markdown
+└ _sass
+
+    ├ _layout.scss
+    └ _syntax-highlighting.scss
+</code></pre><p>markdown语法的文章放在这个目录</p>
+<p>下面必须遵循<code>YYYY-MM-DD-name-of-post.ext</code>这样的命名</p>
+<p>还需要<code>jekyll build</code>命令去生成</p>
+<p>默认情况下，服务以前台的方式挂起，如果希望用后台进程运行服务，可以使用 –detach参数缩写参数-B</p>
+<pre><code>jekyll serve build --detach 
+或者
+jekyll serve build -B
+</code></pre><p>打开文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">layout: post</div><div class="line">title:  &quot;Welcome to Jekyll!&quot;</div><div class="line">date:   2016-03-04 10:52:19 +0100</div><div class="line">categories: jekyll update</div></pre></td></tr></table></figure>
+<p>layout表示使用的是post布局，title是文章标题，date是自动生成的日期，categories是该文章生成html文件后存放的目录，可以去_site/jekyll/update下找到对应日期下面的html文档。当然你也可以只设置jekyll单一的目录，甚至是更多级别的目录，用空格分开即可。头信息设置完成后就可以书写正文了。</p>
+<p>如果每次都输入这些头信息，还要去整理格式，那么一定很烦躁，这种重复性的东西我们就把它自动化，通过Rakefile去解决，它类似shell这样的脚本，可以使用交互模式。以下是我的Rakefile,可以复制后命名为Rakefile，放在站点根目录直接使用，也可以修改为适合自己的Rakefile：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">task :default =&gt; :new</div><div class="line"></div><div class="line">require &apos;fileutils&apos;</div><div class="line"></div><div class="line">desc &quot;创建新 post&quot;</div><div class="line">task :new do</div><div class="line">  puts &quot;请输入要创建的 post URL：&quot;</div><div class="line">	@url = STDIN.gets.chomp</div><div class="line">	puts &quot;请输入 post 标题：&quot;</div><div class="line">	@name = STDIN.gets.chomp</div><div class="line">	puts &quot;请输入 post 子标题：&quot;</div><div class="line">	@subtitle = STDIN.gets.chomp</div><div class="line">	puts &quot;请输入 post 分类，以空格分隔：&quot;</div><div class="line">	@categories = STDIN.gets.chomp</div><div class="line">	puts &quot;请输入 post 标签：&quot;</div><div class="line">	@tag = STDIN.gets.chomp</div><div class="line">	@slug = &quot;#&#123;@url&#125;&quot;</div><div class="line">	@slug = @slug.downcase.strip.gsub(&apos; &apos;, &apos;-&apos;)</div><div class="line">	@date = Time.now.strftime(&quot;%F&quot;)</div><div class="line">	@post_name = &quot;_posts/#&#123;@date&#125;-#&#123;@slug&#125;.md&quot;</div><div class="line">	if File.exist?(@post_name)</div><div class="line">			abort(&quot;文件名已经存在！创建失败&quot;)</div><div class="line">	end</div><div class="line">	FileUtils.touch(@post_name)</div><div class="line">	open(@post_name, &apos;a&apos;) do |file|</div><div class="line">			file.puts &quot;---&quot;</div><div class="line">			file.puts &quot;layout: post&quot;</div><div class="line">			file.puts &quot;title: #&#123;@name&#125;&quot;</div><div class="line">			file.puts &quot;subtitle: #&#123;@subtitle&#125;&quot;</div><div class="line">			file.puts &quot;author: MisterZhai&quot;</div><div class="line">			file.puts &quot;date: #&#123;Time.now&#125;&quot;</div><div class="line">			file.puts &quot;categories: #&#123;@categories&#125;&quot;</div><div class="line">			file.puts &quot;tag: #&#123;@tag&#125;&quot;</div><div class="line">			file.puts &quot;---&quot;</div><div class="line">	end</div><div class="line">	exec &quot;vi #&#123;@post_name&#125;&quot;</div><div class="line">end</div></pre></td></tr></table></figure>
+<p>使用Rake，输入一下命令</p>
+<pre><code>rake new
+</code></pre><p>rake会启动交互模式，让你依次输入title，subtitle，author，categories，tag等信息，并为你创建好具有头信息的markdown文件<br>我们查看_post目录，发现已经有一篇2016-03-05-testurl.md文章</p>
+<p>###创建Github pages</p>
+<p>相对来说这一步就相对简单的多了</p>
+<ul>
+<li>创建仓库，选择setting</li>
+<li>点击<strong>Launch automatic page generator</strong></li>
+<li>编辑下标题和描述，任意选择一个模板，点击Publish</li>
+<li>最后要注意的是<strong>要在github中建立一个基于你的用户名的repository</strong>建立名为username.github.io的repo,否则URL后面会出现仓库的名字username.github.io/xxxx/</li>
+</ul>
+<h2 id="将本地jekyll部署到Github仓库"><a href="#将本地jekyll部署到Github仓库" class="headerlink" title="将本地jekyll部署到Github仓库"></a>将本地jekyll部署到Github仓库</h2><p>cd到要保存代码的文件夹，克隆到本地</p>
+<pre><code>git clone https://github.com/username/username.github.com.git
+</code></pre><p>启动jekyll服务（启动前确保其他目录下没有jekyll服务，可以ps aux|grep jekyll查看进程,有的话,用kill -9 进程号杀掉</p>
+<p>拷贝本地blog(这个是前面本地搭建的blog，后续等同，不再说明)下的所有目录及文件到仓库</p>
+<pre><code>cp -r blog/* username.github.io
+</code></pre><p>上传到线上环境</p>
+<pre><code>git add --all               #添加到暂存区    
+git commit -m &quot;提交jekyll默认页面&quot; #提交到本地仓库
+git push origin master           #线上的站点是部署在master下面的
+</code></pre><p>可以通过<a href="http://username.github.io/访问你的站点" target="_blank" rel="external">http://username.github.io/访问你的站点</a></p>
+<h2 id="绑定个性域名"><a href="#绑定个性域名" class="headerlink" title="绑定个性域名"></a>绑定个性域名</h2><p>下增加一个CNAME文件。 在里面添加你的域名，假设为example.com，然后推送CNAME文件到远程仓库</p>
+<pre><code>git add CNAME
+git push origin master
+</code></pre><p>到域名服务商增加你的CNAME记录。 添加两条记录，@和www的主机记录，记录类型为CNAME类型，CNAME表示别名记录，该记录可以将多个名字映射到同一台计算机。 记录值请写username.github.io.,值得注意的是io后面还有一个圆点，切记，过个几分钟，刷新博客即可访问</p>
+<h2 id="本地开发"><a href="#本地开发" class="headerlink" title="本地开发"></a>本地开发</h2><p>1.通过jekyll serve -B启动服务，使用Rakefile创建文章，然后用自己喜欢的工具进行写作。</p>
+<p>2.完成后，通过jekyll build生成页面，本地localhost:4000查看文章</p>
+<h2 id="发布到线上"><a href="#发布到线上" class="headerlink" title="发布到线上"></a>发布到线上</h2><p>1.可以通过git add,git commit,git push等git命令推送文章到Github Pages服务器</p>
+<p>2.通过绑定的域名，查看线上文章.</p>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="http://pizida.com/technology/2016/03/03/use-jekyll-create-blog-on-github/#jekyll" target="_blank" rel="external">Jekyll本地搭建开发环境以及Github部署流程</a></p>
+<p><a href="http://www.ezlippi.com/blog/2015/03/github-pages-blog.html" target="_blank" rel="external">利用github-pages建立个人博客</a></p>
+<p><a href="http://www.appinn.com/markdown/" target="_blank" rel="external">MarkDown语法</a></p>
+<p><a href="http://jekyllrb.com/docs/home/" target="_blank" rel="external">Jekyll官网</a></p>
+<p><a href="http://jekyllcn.com/docs/home/" target="_blank" rel="external">Jekyll中文镜像网站</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h1 id=&quot;Jekyll的搭建和Github的部署&quot;&gt;&lt;a href=&quot;#Jekyll的搭建和Github的部署&quot; class=&quot;headerlink&quot; title=&quot;Jeky
+    
+    </summary>
+    
+      <category term="Blog" scheme="http://misterzhai.win/categories/Blog/"/>
+    
+    
+      <category term="Blog" scheme="http://misterzhai.win/tags/Blog/"/>
+    
+  </entry>
+  
+  <entry>
     <title>joke</title>
     <link href="http://misterzhai.win/2016/10/16/joke/"/>
     <id>http://misterzhai.win/2016/10/16/joke/</id>
     <published>2016-10-16T12:25:43.000Z</published>
-    <updated>2016-10-16T12:34:10.000Z</updated>
+    <updated>2016-10-16T12:47:07.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>额日期需要<code>rq</code>才能在搜狗上出现，直接打是出不来的！</p>
 <h1 id="2016年10月16日"><a href="#2016年10月16日" class="headerlink" title="2016年10月16日"></a>2016年10月16日</h1><blockquote>

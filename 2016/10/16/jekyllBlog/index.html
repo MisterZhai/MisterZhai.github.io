@@ -1,0 +1,883 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Blog," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="MisterZhai" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Jekyll的搭建和Github的部署先把曾将搭建的JekyllBlog过程发上来吧，虽然弄好之后并没有一直写。
+使用gem安装Jekyllgem install jekyll
+Ruby自带的有gem所以可以直接用gem安装，但是在国内官方的源是没办法用的，会报如下错误：
+ERROR:  Could not find a valid gem &amp;apos;jekyll&amp;apos; (&amp;gt;= 0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jekyll的搭建和Github的部署">
+<meta property="og:url" content="http://misterzhai.win/2016/10/16/jekyllBlog/index.html">
+<meta property="og:site_name" content="MisterZhai">
+<meta property="og:description" content="Jekyll的搭建和Github的部署先把曾将搭建的JekyllBlog过程发上来吧，虽然弄好之后并没有一直写。
+使用gem安装Jekyllgem install jekyll
+Ruby自带的有gem所以可以直接用gem安装，但是在国内官方的源是没办法用的，会报如下错误：
+ERROR:  Could not find a valid gem &amp;apos;jekyll&amp;apos; (&amp;gt;= 0">
+<meta property="og:updated_time" content="2016-10-16T12:53:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jekyll的搭建和Github的部署">
+<meta name="twitter:description" content="Jekyll的搭建和Github的部署先把曾将搭建的JekyllBlog过程发上来吧，虽然弄好之后并没有一直写。
+使用gem安装Jekyllgem install jekyll
+Ruby自带的有gem所以可以直接用gem安装，但是在国内官方的源是没办法用的，会报如下错误：
+ERROR:  Could not find a valid gem &amp;apos;jekyll&amp;apos; (&amp;gt;= 0">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://misterzhai.win/2016/10/16/jekyllBlog/"/>
+
+
+  <title> Jekyll的搭建和Github的部署 | MisterZhai </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?c2a2f19c75bf10353ffd97e4b054bf16";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=58977086";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">MisterZhai</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">MZ'blog</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '1ZhmxibtxBN6ybo6Qj3M','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Jekyll的搭建和Github的部署
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-16T20:46:20+08:00" content="2016-10-16">
+              2016-10-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Blog/" itemprop="url" rel="index">
+                    <span itemprop="name">Blog</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/16/jekyllBlog/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/16/jekyllBlog/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv">本文总阅读量<i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><h1 id="Jekyll的搭建和Github的部署"><a href="#Jekyll的搭建和Github的部署" class="headerlink" title="Jekyll的搭建和Github的部署"></a>Jekyll的搭建和Github的部署</h1><p>先把曾将搭建的JekyllBlog过程发上来吧，虽然弄好之后并没有一直写。</p>
+<h2 id="使用gem安装Jekyll"><a href="#使用gem安装Jekyll" class="headerlink" title="使用gem安装Jekyll"></a>使用gem安装Jekyll</h2><pre><code>gem install jekyll
+</code></pre><p>Ruby自带的有gem所以可以直接用gem安装，但是在国内官方的源是没办法用的，会报如下错误：</p>
+<pre><code>ERROR:  Could not find a valid gem &apos;jekyll&apos; (&gt;= 0), here is why:
+      Unable to download data from https://rubygems.org/ - Errno::ECONNRESET: Connection reset by peer - SSL_connect (https://rubygems.org/latest_specs.4.8.gz)
+</code></pre><p>所以就需要更换为国内的镜像，一般使用淘宝的<a href="https://ruby.taobao.org" target="_blank" rel="external">RubyGems</a>镜像,具体设置见文档。</p>
+<pre><code>ERROR:  While executing gem ... (Gem::FilePermissionError)
+You don&apos;t have write permissions for the /Library/Ruby/Gems/2.0.0 directory.
+</code></pre><p>把权限修改过来</p>
+<pre><code>sudo chmod 777 /Library/Ruby/Gems/2.0.0
+</code></pre><p>在安装的过程中一直提示错误，于是又反过去，发现在更换淘宝源的时候，有一条命令没有输入执行，忽略了，于是又开始执行</p>
+<pre><code>gem install rails
+</code></pre><p>提示出错，又是搜索，解决步骤</p>
+<ul>
+<li>sudo gem update –system</li>
+<li>xcode-select –install   会提示安装命令行工具，点击安装</li>
+<li>sudo gem install compass</li>
+<li>sudo gem install rails 执行中会提示是否重新覆盖<strong>Overwrite the executable? [yN]</strong>输入y</li>
+</ul>
+<p>然后还是卡在</p>
+<pre><code>Fetching: listen-3.0.6.gem (100%)
+ERROR:  While executing gem ... (Errno::EACCES)
+Permission denied - /Library/Ruby/Gems/2.0.0/cache/listen-3.0.6.gem
+</code></pre><p>然后切换VPN用Google开始搜，并没有卵用ORZ~~然后用sudo又试了一下居然success</p>
+<pre><code>sudo gem install jekyll
+</code></pre><p>如果要卸载<code>gem uninstall jekyll</code></p>
+<h2 id="创建博客站点"><a href="#创建博客站点" class="headerlink" title="创建博客站点"></a>创建博客站点</h2><p>先cd 到桌面 在桌面目录下</p>
+<pre><code>jekyll new blog 
+</code></pre><p>会在桌面上创建出一个文件夹<code>执行help命令查看更多</code></p>
+<h2 id="开启服务"><a href="#开启服务" class="headerlink" title="开启服务"></a>开启服务</h2><pre><code>cd blog         #进入blog目录,记得一定要进入创建的目录，否则服务无法开启
+jekyll serve      #启动你的http服务 
+</code></pre><p>本地服务开启 默认开启端口4000 输入<a href="http://localhost:4000或者http://127.0.0.1:4000/即可访问" target="_blank" rel="external">http://localhost:4000或者http://127.0.0.1:4000/即可访问</a></p>
+<p>目录结构如下：</p>
+<pre><code>├ about.md
+├ _config.yml
+├ css
+│   └ main.scss
+├ feed.xml
+├ _includes
+│   ├ footer.html
+│   ├ header.html
+│   ├ head.html
+│   ├ icon-github.html
+│   ├ icon-github.svg
+│   ├ icon-twitter.html
+│   └ icon-twitter.svg
+├ index.html
+├ _layouts
+│   ├ default.html
+│   ├ page.html
+│   └ post.html
+├ _posts
+│   └ 2016-03-04-welcome-to-jekyll.markdown
+└ _sass
+
+    ├ _layout.scss
+    └ _syntax-highlighting.scss
+</code></pre><p>markdown语法的文章放在这个目录</p>
+<p>下面必须遵循<code>YYYY-MM-DD-name-of-post.ext</code>这样的命名</p>
+<p>还需要<code>jekyll build</code>命令去生成</p>
+<p>默认情况下，服务以前台的方式挂起，如果希望用后台进程运行服务，可以使用 –detach参数缩写参数-B</p>
+<pre><code>jekyll serve build --detach 
+或者
+jekyll serve build -B
+</code></pre><p>打开文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">layout: post</div><div class="line">title:  &quot;Welcome to Jekyll!&quot;</div><div class="line">date:   2016-03-04 10:52:19 +0100</div><div class="line">categories: jekyll update</div></pre></td></tr></table></figure>
+<p>layout表示使用的是post布局，title是文章标题，date是自动生成的日期，categories是该文章生成html文件后存放的目录，可以去_site/jekyll/update下找到对应日期下面的html文档。当然你也可以只设置jekyll单一的目录，甚至是更多级别的目录，用空格分开即可。头信息设置完成后就可以书写正文了。</p>
+<p>如果每次都输入这些头信息，还要去整理格式，那么一定很烦躁，这种重复性的东西我们就把它自动化，通过Rakefile去解决，它类似shell这样的脚本，可以使用交互模式。以下是我的Rakefile,可以复制后命名为Rakefile，放在站点根目录直接使用，也可以修改为适合自己的Rakefile：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">task :default =&gt; :new</div><div class="line"></div><div class="line">require &apos;fileutils&apos;</div><div class="line"></div><div class="line">desc &quot;创建新 post&quot;</div><div class="line">task :new do</div><div class="line">  puts &quot;请输入要创建的 post URL：&quot;</div><div class="line">	@url = STDIN.gets.chomp</div><div class="line">	puts &quot;请输入 post 标题：&quot;</div><div class="line">	@name = STDIN.gets.chomp</div><div class="line">	puts &quot;请输入 post 子标题：&quot;</div><div class="line">	@subtitle = STDIN.gets.chomp</div><div class="line">	puts &quot;请输入 post 分类，以空格分隔：&quot;</div><div class="line">	@categories = STDIN.gets.chomp</div><div class="line">	puts &quot;请输入 post 标签：&quot;</div><div class="line">	@tag = STDIN.gets.chomp</div><div class="line">	@slug = &quot;#&#123;@url&#125;&quot;</div><div class="line">	@slug = @slug.downcase.strip.gsub(&apos; &apos;, &apos;-&apos;)</div><div class="line">	@date = Time.now.strftime(&quot;%F&quot;)</div><div class="line">	@post_name = &quot;_posts/#&#123;@date&#125;-#&#123;@slug&#125;.md&quot;</div><div class="line">	if File.exist?(@post_name)</div><div class="line">			abort(&quot;文件名已经存在！创建失败&quot;)</div><div class="line">	end</div><div class="line">	FileUtils.touch(@post_name)</div><div class="line">	open(@post_name, &apos;a&apos;) do |file|</div><div class="line">			file.puts &quot;---&quot;</div><div class="line">			file.puts &quot;layout: post&quot;</div><div class="line">			file.puts &quot;title: #&#123;@name&#125;&quot;</div><div class="line">			file.puts &quot;subtitle: #&#123;@subtitle&#125;&quot;</div><div class="line">			file.puts &quot;author: MisterZhai&quot;</div><div class="line">			file.puts &quot;date: #&#123;Time.now&#125;&quot;</div><div class="line">			file.puts &quot;categories: #&#123;@categories&#125;&quot;</div><div class="line">			file.puts &quot;tag: #&#123;@tag&#125;&quot;</div><div class="line">			file.puts &quot;---&quot;</div><div class="line">	end</div><div class="line">	exec &quot;vi #&#123;@post_name&#125;&quot;</div><div class="line">end</div></pre></td></tr></table></figure>
+<p>使用Rake，输入一下命令</p>
+<pre><code>rake new
+</code></pre><p>rake会启动交互模式，让你依次输入title，subtitle，author，categories，tag等信息，并为你创建好具有头信息的markdown文件<br>我们查看_post目录，发现已经有一篇2016-03-05-testurl.md文章</p>
+<p>###创建Github pages</p>
+<p>相对来说这一步就相对简单的多了</p>
+<ul>
+<li>创建仓库，选择setting</li>
+<li>点击<strong>Launch automatic page generator</strong></li>
+<li>编辑下标题和描述，任意选择一个模板，点击Publish</li>
+<li>最后要注意的是<strong>要在github中建立一个基于你的用户名的repository</strong>建立名为username.github.io的repo,否则URL后面会出现仓库的名字username.github.io/xxxx/</li>
+</ul>
+<h2 id="将本地jekyll部署到Github仓库"><a href="#将本地jekyll部署到Github仓库" class="headerlink" title="将本地jekyll部署到Github仓库"></a>将本地jekyll部署到Github仓库</h2><p>cd到要保存代码的文件夹，克隆到本地</p>
+<pre><code>git clone https://github.com/username/username.github.com.git
+</code></pre><p>启动jekyll服务（启动前确保其他目录下没有jekyll服务，可以ps aux|grep jekyll查看进程,有的话,用kill -9 进程号杀掉</p>
+<p>拷贝本地blog(这个是前面本地搭建的blog，后续等同，不再说明)下的所有目录及文件到仓库</p>
+<pre><code>cp -r blog/* username.github.io
+</code></pre><p>上传到线上环境</p>
+<pre><code>git add --all               #添加到暂存区    
+git commit -m &quot;提交jekyll默认页面&quot; #提交到本地仓库
+git push origin master           #线上的站点是部署在master下面的
+</code></pre><p>可以通过<a href="http://username.github.io/访问你的站点" target="_blank" rel="external">http://username.github.io/访问你的站点</a></p>
+<h2 id="绑定个性域名"><a href="#绑定个性域名" class="headerlink" title="绑定个性域名"></a>绑定个性域名</h2><p>下增加一个CNAME文件。 在里面添加你的域名，假设为example.com，然后推送CNAME文件到远程仓库</p>
+<pre><code>git add CNAME
+git push origin master
+</code></pre><p>到域名服务商增加你的CNAME记录。 添加两条记录，@和www的主机记录，记录类型为CNAME类型，CNAME表示别名记录，该记录可以将多个名字映射到同一台计算机。 记录值请写username.github.io.,值得注意的是io后面还有一个圆点，切记，过个几分钟，刷新博客即可访问</p>
+<h2 id="本地开发"><a href="#本地开发" class="headerlink" title="本地开发"></a>本地开发</h2><p>1.通过jekyll serve -B启动服务，使用Rakefile创建文章，然后用自己喜欢的工具进行写作。</p>
+<p>2.完成后，通过jekyll build生成页面，本地localhost:4000查看文章</p>
+<h2 id="发布到线上"><a href="#发布到线上" class="headerlink" title="发布到线上"></a>发布到线上</h2><p>1.可以通过git add,git commit,git push等git命令推送文章到Github Pages服务器</p>
+<p>2.通过绑定的域名，查看线上文章.</p>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="http://pizida.com/technology/2016/03/03/use-jekyll-create-blog-on-github/#jekyll" target="_blank" rel="external">Jekyll本地搭建开发环境以及Github部署流程</a></p>
+<p><a href="http://www.ezlippi.com/blog/2015/03/github-pages-blog.html" target="_blank" rel="external">利用github-pages建立个人博客</a></p>
+<p><a href="http://www.appinn.com/markdown/" target="_blank" rel="external">MarkDown语法</a></p>
+<p><a href="http://jekyllrb.com/docs/home/" target="_blank" rel="external">Jekyll官网</a></p>
+<p><a href="http://jekyllcn.com/docs/home/" target="_blank" rel="external">Jekyll中文镜像网站</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Blog/" rel="tag">#Blog</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/16/joke/" rel="next" title="joke">
+                <i class="fa fa-chevron-left"></i> joke
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/10/16/jekyllBlog/"
+     data-title="Jekyll的搭建和Github的部署"
+     data-content=""
+     data-url="http://misterzhai.win/2016/10/16/jekyllBlog/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/10/16/jekyllBlog/"
+           data-title="Jekyll的搭建和Github的部署" data-url="http://misterzhai.win/2016/10/16/jekyllBlog/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oezkq262y.bkt.clouddn.com/blog/2016-10-13-luoxiaohei.gif"
+               alt="MisterZhai" />
+          <p class="site-author-name" itemprop="name">MisterZhai</p>
+          <p class="site-description motion-element" itemprop="description">MisterZhai的个人博客 Email:guanjunzhai@163.com</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/misterzhai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              快速链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://google.com/" title="Google" target="_blank">Google</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        <iframe frameborder="no" border="0" marginwidth="1" marginheight="0" width=320 height=120 src="https://music.daoapp.io/iframe?song=287749&qssl=1&qlrc=1&qnarrow=0&autoplay=1"></iframe>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Jekyll的搭建和Github的部署"><span class="nav-number">1.</span> <span class="nav-text">Jekyll的搭建和Github的部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用gem安装Jekyll"><span class="nav-number">1.1.</span> <span class="nav-text">使用gem安装Jekyll</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建博客站点"><span class="nav-number">1.2.</span> <span class="nav-text">创建博客站点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启服务"><span class="nav-number">1.3.</span> <span class="nav-text">开启服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将本地jekyll部署到Github仓库"><span class="nav-number">1.4.</span> <span class="nav-text">将本地jekyll部署到Github仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定个性域名"><span class="nav-number">1.5.</span> <span class="nav-text">绑定个性域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地开发"><span class="nav-number">1.6.</span> <span class="nav-text">本地开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布到线上"><span class="nav-number">1.7.</span> <span class="nav-text">发布到线上</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文章"><span class="nav-number">1.8.</span> <span class="nav-text">参考文章</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MisterZhai</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">本站访客数<i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv">本站总访问量<i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"misterzhai"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
