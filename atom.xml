@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://misterzhai.win/"/>
-  <updated>2016-10-16T12:14:02.000Z</updated>
+  <updated>2016-10-16T12:34:10.000Z</updated>
   <id>http://misterzhai.win/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>joke</title>
+    <link href="http://misterzhai.win/2016/10/16/joke/"/>
+    <id>http://misterzhai.win/2016/10/16/joke/</id>
+    <published>2016-10-16T12:25:43.000Z</published>
+    <updated>2016-10-16T12:34:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>额日期需要<code>rq</code>才能在搜狗上出现，直接打是出不来的！</p>
+<h1 id="2016年10月16日"><a href="#2016年10月16日" class="headerlink" title="2016年10月16日"></a>2016年10月16日</h1><blockquote>
+<p>森林中，大象正在注射冰毒。<br>小白兔蹦蹦跳跳地跑过来对他说：＂世界这么美丽，你为什么要在这里吸毒呢？跟我一起去探索大自然吧！＂大象觉得有理，跟小白兔跑了。<br>他们看见长颈鹿正在注射海洛因。小白兔对他说：”世界这么美丽，你为什么要在这里吸毒呢？跟我一起去探索大自然吧！”长颈鹿觉得有理，跟他们俩跑了。<br>他们三个跑着跑着看到狮子在吸大麻。小白兔对他说：”世界这么美丽，你为什么要在这里吸毒呢？跟我一起去探索大自然吧！”<br>狮子愣了一下，把小白兔揍了一顿。<br>长颈鹿和大象不解，问为什么要打他。<br>狮子气愤地说：”他妈的，这混蛋兔子，每次一嗑摇头丸就拉着我满森林乱跑！”</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;额日期需要&lt;code&gt;rq&lt;/code&gt;才能在搜狗上出现，直接打是出不来的！&lt;/p&gt;
+&lt;h1 id=&quot;2016年10月16日&quot;&gt;&lt;a href=&quot;#2016年10月16日&quot; 
+    
+    </summary>
+    
+      <category term="笑话" scheme="http://misterzhai.win/categories/%E7%AC%91%E8%AF%9D/"/>
+    
+    
+      <category term="笑话" scheme="http://misterzhai.win/tags/%E7%AC%91%E8%AF%9D/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello-World</title>
