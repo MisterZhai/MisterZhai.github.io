@@ -172,7 +172,7 @@
     <link href="http://misterzhai.win/2016/10/16/hexoBlog/"/>
     <id>http://misterzhai.win/2016/10/16/hexoBlog/</id>
     <published>2016-10-16T12:58:12.000Z</published>
-    <updated>2016-10-16T14:15:04.000Z</updated>
+    <updated>2016-11-06T15:16:06.000Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h1><p>相对来说，hexo的安装更简单…</p>
 <h2 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h2><pre><code>&lt;https://nodejs.org/en/&gt;安装，V6.8.0Current
