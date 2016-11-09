@@ -108,7 +108,7 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home
 <meta property="og:image" content="http://misterzhai.win/2016-11-09-02.png">
 <meta property="og:image" content="http://misterzhai.win/2016-11-09-03.png">
 <meta property="og:image" content="http://misterzhai.win/2016-11-09-04.png">
-<meta property="og:updated_time" content="2016-11-09T13:34:32.000Z">
+<meta property="og:updated_time" content="2016-11-09T13:46:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac+Maven+IDEA搭建服务器开发环境">
 <meta name="twitter:description" content="安装配置Maven插件检查JAVA_HOME环境变量以及Java命令echo $JAVA_HOME
@@ -445,13 +445,18 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home
 <ul>
 <li>配置项目名和组织名,GroupId组织名一般为域名(com.mz)，ArtifactId Maven管理的包名和后面的Project name项目名称一致即可</li>
 </ul>
+<p>GroupID是项目组织唯一的标识符，实际对应JAVA的包的结构，是main目录里java的目录结构。<br>ArtifactID就是项目的唯一的标识符，实际对应项目的名称，就是项目根目录的名称。<br>一般来说，包的命名习惯是域名的反过来,加个公司或者个人的名称吧，个人习惯。www.demo.com -&gt; com.richard.demo; 那么都知道，test是项目名称，也是在最后面的，所有项目组的唯一标识符(groupId)：com.richard, 项目的唯一标识符（ArtifactId）demo</p>
 <p><img src="2016-11-09-03.png" alt=""></p>
+<p>点击next 更换maven 路径、配置文件、仓库 为自己的地址，点击+号输入对应的archetypeCatalog和internal 能提升建项目的速度</p>
 <ul>
-<li><p>点击next 填入project name 下面点开展开，可以看见有Module name的设置 如果有一个的话，也可以同名</p>
-</li>
+<li>点击next 填入project name 下面<code>More Setting</code>点开展开，可以看见有Module name的设置 如果有一个的话，也可以同名，如果有很多的module，那肯定是修改一下</li>
+</ul>
+<p>来自网上的解释：<br>archetypeCatalog表示插件使用的archetype元数据，不加这个参数时默认为remote，local，即中央仓库archetype元数据，由于中央仓库的archetype太多了，所以导致很慢，指定internal来表示仅使用内部元数据。</p>
+<ul>
 <li><p>添加相应的根目录和测试目录，使用Make Directory As设置src/main/java为Sources Root(源码)</p>
 </li>
-<li><p>（这一部分存在不用设置了）src/main/resources为ReSources Root(资源文件)，src/test/java为Test Sources Root(测试源码)，src/test/resources为Test ReSources Root(测试的资源文件)，webapp(web文件根目录)</p>
+<li><p>（这一部分存在不用设置了）src/main/resources为ReSources Root(资源文件)，src/test/java为Test Sources Root(测试源码)，src/test/resources为Test ReSources Root(测试的资源文件)，webapp(web文件根目录) </p>
+<p>也可以右键项目-选择Open Module Settings打开项目配置页面更改 </p>
 </li>
 <li><p>创建项目的部分就算完成了,注意根目录下的pom.xml文件是maven的配置文件，在这里更新依赖和右键选择对应的功能</p>
 </li>
@@ -462,12 +467,18 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home
 </li>
 <li><p>在pom.xml配置服务器容器(如Jetty和Tomcat),在pom.xml-&gt;build-&gt;plugins下添加jetty和tomcat的 maven plugin，点击右上角的提示import,maven会自动下载jetty和tomcat的容器插件，打开右侧的Maven Projects，展开Plugins会看到jetty和tomcat，你也可以使用前一篇blog中普通java web配置Tomcat的方式来运行项目，</p>
 </li>
+</ul>
+<p>修改名字，选择本地tomcat，这些都配置好了之后，切换到server旁边的Deployment属性框，点击加号，然后选中exploded的war， 点击OK.</p>
+<p>运行即可。</p>
+<ul>
 <li><p><code>注意在Jfinal中 main不能启动容器，只有jetty才行 在web.xml中Config的路径不要配置错误</code>  <code>打包的时候直接可以build 选择 Artifacts就可以在target中找到对应的包了</code></p>
 </li>
 <li><p><code>第一次运行的时候有可能会失败，要下载一些东西，多试几次</code></p>
 </li>
 </ul>
 <h1 id="搜索其他jar"><a href="#搜索其他jar" class="headerlink" title="搜索其他jar"></a>搜索其他jar</h1><p>如果我们要使用其他的jar，在<a href="http://search.maven.org/" target="_blank" rel="external">http://search.maven.org/</a>中央库里搜索相关的包，如：使用jfinal,搜索并选择相应的版本</p>
+<p>或者</p>
+<p><a href="http://mvnrepository.com/" target="_blank" rel="external">http://mvnrepository.com/</a></p>
 <h1 id="添加本地jar包依赖"><a href="#添加本地jar包依赖" class="headerlink" title="添加本地jar包依赖"></a>添加本地jar包依赖</h1><p>如果项目中使用了maven来管理依赖，但是同时需要添加本地的jar包（比如说有些jar包在maven的中央仓库中找不到）</p>
 <p>这时不能直接在项目工程（Ctrl + Shift + Alt + S）的module中添加磁盘上的jar包，否则会报错</p>
 <p>本地的jar包用maven install命令添加到maven的本地仓库里再在pom.xml文件中添加dependency即可。</p>
