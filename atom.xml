@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://misterzhai.win/"/>
-  <updated>2016-11-02T08:01:51.000Z</updated>
+  <updated>2016-11-09T13:34:32.000Z</updated>
   <id>http://misterzhai.win/</id>
   
   <author>
@@ -14,6 +14,89 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac+Maven+IDEA搭建服务器开发环境</title>
+    <link href="http://misterzhai.win/2016/11/09/idea-maven-web/"/>
+    <id>http://misterzhai.win/2016/11/09/idea-maven-web/</id>
+    <published>2016-11-09T13:27:45.000Z</published>
+    <updated>2016-11-09T13:34:32.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="安装配置Maven插件"><a href="#安装配置Maven插件" class="headerlink" title="安装配置Maven插件"></a>安装配置Maven插件</h1><h2 id="检查JAVA-HOME环境变量以及Java命令"><a href="#检查JAVA-HOME环境变量以及Java命令" class="headerlink" title="检查JAVA_HOME环境变量以及Java命令"></a>检查JAVA_HOME环境变量以及Java命令</h2><pre><code>echo $JAVA_HOME
+
+java -version
+
+本地 ~/.bash_profile
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home
+</code></pre><h2 id="下载安装Maven文件修改环境变量"><a href="#下载安装Maven文件修改环境变量" class="headerlink" title="下载安装Maven文件修改环境变量"></a>下载安装Maven文件修改环境变量</h2><p><a href="http://maven.apache.org/download.html" target="_blank" rel="external">http://maven.apache.org/download.html</a></p>
+<p>把目录放置到//Users/ZMBP/Develop/  </p>
+<p>修改Maven配置文件</p>
+<p>config里面的settings.xml</p>
+<p>新建一个文件夹，作为仓库</p>
+<p>在上面配置文件中添加</p>
+<pre><code>&lt;localRepository&gt;/Users/ZMBP/Develop/apache-maven-3.3.9/repository&lt;/localRepository&gt;
+</code></pre><p>添加ali源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;mirror&gt;</div><div class="line">     &lt;id&gt;nexus-aliyun&lt;/id&gt;</div><div class="line">     &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;</div><div class="line">     &lt;name&gt;Nexus aliyun&lt;/name&gt;</div><div class="line">     &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;</div><div class="line">   &lt;/mirror&gt;</div></pre></td></tr></table></figure>
+<p>编辑本地环境 ~/.bash_profile</p>
+<p>export M2_HOME=/Users/ZMBP/Develop/apache-maven-3.3.9<br>export M2=$M2_HOME/bin<br>export PATH=$M2:$PATH</p>
+<p>重启配置服务</p>
+<p>source .bash_profile</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">设置M2_HOME(IntelliJ默认为M2_HOME)环境变量指向apache-maven-3.2.3，并且把Maven安装目录下的bin/文件夹添加到系统环境变量PATH中去：</div><div class="line"></div><div class="line">vim打开/etc/profile文件 加入如下代码：    </div><div class="line"></div><div class="line">export M2_HOME=/Users/wanyakun/Documents/apache-maven-3.2.3</div><div class="line"></div><div class="line">export PATH=$PATH:$M2_HOME/bin</div><div class="line"></div><div class="line">运行以下命令检查Maven安装：</div><div class="line"></div><div class="line">	echo $M2_HOME</div><div class="line">	mvn –version</div></pre></td></tr></table></figure>
+<p>在plugins里启动maven的两个插件(默认启动)，并配置Maven home directory(override,点…选择maven的目录)</p>
+<p>如果上面更改了仓库的地址，这里也要设置Build,Execution,Deployment-&gt;Build Tools-&gt;Maven</p>
+<h1 id="IDEA-maven"><a href="#IDEA-maven" class="headerlink" title="IDEA+maven"></a>IDEA+maven</h1><h2 id="新建一个Project"><a href="#新建一个Project" class="headerlink" title="新建一个Project"></a>新建一个Project</h2><ul>
+<li>设置Maven的位置，在创建新的maven工程的时候也得改成自己的</li>
+</ul>
+<p><img src="2016-11-09-01.png" alt=""></p>
+<ul>
+<li>通过Maven建立Project，创建时选择使用模板</li>
+</ul>
+<p><img src="2016-11-09-02.png" alt=""></p>
+<ul>
+<li>配置项目名和组织名,GroupId组织名一般为域名(com.mz)，ArtifactId Maven管理的包名和后面的Project name项目名称一致即可</li>
+</ul>
+<p><img src="2016-11-09-03.png" alt=""></p>
+<ul>
+<li><p>点击next 填入project name 下面点开展开，可以看见有Module name的设置 如果有一个的话，也可以同名</p>
+</li>
+<li><p>添加相应的根目录和测试目录，使用Make Directory As设置src/main/java为Sources Root(源码)</p>
+</li>
+<li><p>（这一部分存在不用设置了）src/main/resources为ReSources Root(资源文件)，src/test/java为Test Sources Root(测试源码)，src/test/resources为Test ReSources Root(测试的资源文件)，webapp(web文件根目录)</p>
+</li>
+<li><p>创建项目的部分就算完成了,注意根目录下的pom.xml文件是maven的配置文件，在这里更新依赖和右键选择对应的功能</p>
+</li>
+</ul>
+<p><img src="2016-11-09-04.png" alt=""></p>
+<ul>
+<li><p>使用maven的方式启动项目,修改web.xml，index.jsp为默认的欢迎页</p>
+</li>
+<li><p>在pom.xml配置服务器容器(如Jetty和Tomcat),在pom.xml-&gt;build-&gt;plugins下添加jetty和tomcat的 maven plugin，点击右上角的提示import,maven会自动下载jetty和tomcat的容器插件，打开右侧的Maven Projects，展开Plugins会看到jetty和tomcat，你也可以使用前一篇blog中普通java web配置Tomcat的方式来运行项目，</p>
+</li>
+<li><p><code>注意在Jfinal中 main不能启动容器，只有jetty才行 在web.xml中Config的路径不要配置错误</code>  <code>打包的时候直接可以build 选择 Artifacts就可以在target中找到对应的包了</code></p>
+</li>
+<li><p><code>第一次运行的时候有可能会失败，要下载一些东西，多试几次</code></p>
+</li>
+</ul>
+<h1 id="搜索其他jar"><a href="#搜索其他jar" class="headerlink" title="搜索其他jar"></a>搜索其他jar</h1><p>如果我们要使用其他的jar，在<a href="http://search.maven.org/" target="_blank" rel="external">http://search.maven.org/</a>中央库里搜索相关的包，如：使用jfinal,搜索并选择相应的版本</p>
+<h1 id="添加本地jar包依赖"><a href="#添加本地jar包依赖" class="headerlink" title="添加本地jar包依赖"></a>添加本地jar包依赖</h1><p>如果项目中使用了maven来管理依赖，但是同时需要添加本地的jar包（比如说有些jar包在maven的中央仓库中找不到）</p>
+<p>这时不能直接在项目工程（Ctrl + Shift + Alt + S）的module中添加磁盘上的jar包，否则会报错</p>
+<p>本地的jar包用maven install命令添加到maven的本地仓库里再在pom.xml文件中添加dependency即可。</p>
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p>IDEA+maven快速上手JFinal（全步骤图文解析）<br><a href="https://my.oschina.net/mzdbxqh/blog/718748" target="_blank" rel="external">https://my.oschina.net/mzdbxqh/blog/718748</a></p>
+<p>使用IntelliJ IDEA 配置Maven（入门）<br><a href="http://blog.csdn.net/qq_32588349/article/details/51461182" target="_blank" rel="external">http://blog.csdn.net/qq_32588349/article/details/51461182</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h1 id=&quot;安装配置Maven插件&quot;&gt;&lt;a href=&quot;#安装配置Maven插件&quot; class=&quot;headerlink&quot; title=&quot;安装配置Maven插件&quot;&gt;&lt;/a&gt;安装配
+    
+    </summary>
+    
+      <category term="Java" scheme="http://misterzhai.win/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="http://misterzhai.win/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>IntelliJ IDEA上JFinal开发环境搭建手册</title>
